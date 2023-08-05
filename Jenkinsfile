@@ -27,7 +27,7 @@ environment{
         stages{
             stage('Build'){
                 steps{
-                    sh 'mvnz -s settings.xml -DskipTests install'
+                    sh 'mvn -s settings.xml -DskipTests install'
                 }
                 post{
                     success {
