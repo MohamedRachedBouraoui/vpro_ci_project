@@ -22,6 +22,24 @@ environment{
                 steps{
                     sh 'mvn -s settings.xml -DskipTests install'
                 }
+                post{
+                    success {
+                        echo "now archiving ..."
+                        archiveArtifacts artifacts: '**/*.war'
+                    }
+                }
+            }
+        }
+
+        stage(name: 'Test'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+
+        stage(name: 'Checkstyle analysis'){
+            steps{
+                sh 'mvn checkstyle:checkstyle'
             }
         }
 }
