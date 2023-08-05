@@ -29,8 +29,6 @@ environment{
                     }
                 }
             }
-        }
-
         stage(name: 'Test'){
             steps{
                 sh 'mvn test'
@@ -42,4 +40,6 @@ environment{
                 sh 'mvn checkstyle:checkstyle'
             }
         }
+        }
+
 }
