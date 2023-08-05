@@ -59,7 +59,16 @@ environment{
                         -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
                     }
                 }
-        }
+            }
+             stage('Quality gate'){
+                steps{
+                    timeout(time: 1,unit: 'HOURS'){
+                        //Indicates whether to set the pipeline to UNSTAIBLE if set to "true"
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
+
         }
 
 }
