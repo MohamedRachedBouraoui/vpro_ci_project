@@ -29,17 +29,17 @@ environment{
                     }
                 }
             }
-        stage(name: 'Test'){
-            steps{
-                sh 'mvn test'
+            stage('Test'){
+                steps{
+                    sh 'mvn test'
+                }
             }
-        }
 
-        stage(name: 'Checkstyle analysis'){
-            steps{
-                sh 'mvn checkstyle:checkstyle'
+            stage('Checkstyle analysis'){
+                steps{
+                    sh 'mvn checkstyle:checkstyle'
+                }
             }
-        }
         }
 
 }
